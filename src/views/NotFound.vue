@@ -1,0 +1,5 @@
+<template>
+  <div class="page">
+    <h2>404 Not Found</h2>
+  </div>
+</template>

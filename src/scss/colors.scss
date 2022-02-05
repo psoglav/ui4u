@@ -1,0 +1,43 @@
+@function numToHEX($n) {
+  $result: $n;
+  $letters: "a", "b", "c", "d", "e", "f";
+  @if $n > 9 {
+    $result: $letters($n - 9);
+  }
+  @return $result;
+}
+
+:root {
+  --primary-text: black;
+
+  @for $i from 1 to 9 {
+    --primary-text-#{$i}: #000000#{$i}#{$i};
+  }
+
+  --inverted-primary-text: white;
+  --primary-border: black;
+  --primary-bg: white;
+}
+
+html[dark] {
+  --primary-text: white;
+
+  @for $i from 1 to 9 {
+    $h: numToHEX($i + 1);
+    --primary-text-#{$i}: #ffffff#{$h}#{$h};
+  }
+
+  --inverted-primary-text: black;
+  --primary-border: white;
+  --primary-bg: black;
+}
+
+html,
+body {
+  background-color: var(--primary-bg);
+}
+
+html[dark],
+html[dark] body {
+  background-color: #000;
+}
